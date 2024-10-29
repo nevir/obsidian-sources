@@ -2,12 +2,36 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "install",
+      "detail": "yarn install",
+
+      "type": "npm",
+      "script": "install",
+
+      "presentation": {
+        "clear": true,
+        "close": true,
+        "echo": true,
+        "focus": false,
+        "group": "dev",
+        "panel": "dedicated",
+        "reveal": "always",
+        "showReuseMessage": false,
+      },
+      "icon": {
+        "id": "circuit-board",
+        "color": "terminal.ansiGreen",
+      },
+    },
+
+    {
       "label": "dev",
       "detail": "parcel watch",
 
       "type": "npm",
       "script": "dev",
       "isBackground": true,
+      "dependsOn": ["install"],
 
       "problemMatcher": {
         "pattern": {
