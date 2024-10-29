@@ -1,0 +1,43 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dev",
+      "detail": "parcel watch",
+
+      "type": "npm",
+      "script": "dev",
+      "isBackground": true,
+
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "."
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Building",
+          "endsPattern": "Built",
+        },
+      },
+
+      "presentation": {
+        "clear": true,
+        "close": true,
+        "echo": true,
+        "focus": false,
+        "group": "dev",
+        "panel": "dedicated",
+        "reveal": "always",
+        "showReuseMessage": false,
+      },
+      "icon": {
+        "id": "circuit-board",
+        "color": "terminal.ansiGreen",
+      },
+
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+    },
+  ]
+}

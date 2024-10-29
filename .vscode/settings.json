@@ -1,0 +1,21 @@
+{
+  // Formatting
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "files.trimFinalNewlines": true,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  // TypeScript
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+
+  // Workspace
+  "files.exclude": {
+    "**/.*": true,
+    "**/node_modules/": true,
+    "**/*.lock": true,
+    "*config.json": true,
+    "main.js": true
+  },
+}
