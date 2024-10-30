@@ -13,8 +13,8 @@
     "allowUnusedLabels": false,
     // Enforce ES' strict mode at runtime
     "alwaysStrict": true,
-    // Avoids subtle bugs when testing for existence of keys vs values.
-    "exactOptionalPropertyTypes": true,
+    // Would be nice, but in practice it is too strict.
+    "exactOptionalPropertyTypes": false,
     // Covered by Biome as an error.
     "noFallthroughCasesInSwitch": false,
     // Make sure that we annotate any code TypeScript cannot infer types of.

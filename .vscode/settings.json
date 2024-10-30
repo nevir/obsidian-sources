@@ -16,6 +16,7 @@
     "**/node_modules/": true,
     "**/*.lock": true,
     "*config.json": true,
+    "data.json": true,
     "main.js": true
   },
 }
