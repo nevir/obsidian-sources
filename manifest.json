@@ -1,9 +1,10 @@
 {
-  "id": "template",
-  "name": "Obsidian Template",
-  "description": "A template for creating Obsidian plugins",
+  "id": "sources",
+  "name": "Sources",
+  "description": "Synchronize your notes with external sources.",
   "version": "0.1.0",
   "minAppVersion": "1.7.2",
   "author": "Ian MacLeod",
-  "authorUrl": "https://github.com/nevir"
+  "authorUrl": "https://github.com/nevir",
+  "fundingUrl": "https://github.com/sponsors/nevir"
 }

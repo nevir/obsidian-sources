@@ -1,3 +1,3 @@
-# Obsidian Plugin Template
+# Sources (Obsidian Plugin)
 
-A template for Obsidian plugins.
+Synchronize your notes with external sources.
