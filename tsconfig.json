@@ -9,42 +9,60 @@
 
     // Help catch refactoring errors.
     "allowUnreachableCode": false,
+
     // Help catch refactoring errors.
     "allowUnusedLabels": false,
+
     // Enforce ES' strict mode at runtime
     "alwaysStrict": true,
+
     // Would be nice, but in practice it is too strict.
     "exactOptionalPropertyTypes": false,
+
     // Covered by Biome as an error.
     "noFallthroughCasesInSwitch": false,
+
     // Make sure that we annotate any code TypeScript cannot infer types of.
     "noImplicitAny": true,
+
     // Help catch refactoring errors.
     "noImplicitOverride": true,
+
     // Usually a programmer error.
     "noImplicitReturns": true,
+
     // Make sure that we annotate any code TypeScript cannot infer types of.
     "noImplicitThis": true,
+
     // Use different syntax between explicitly defined properties and indexed
     // values, so it is clear to the reader.
     "noPropertyAccessFromIndexSignature": true,
+
     // Rather than assume that indexed values always exist; let's be explicit.
     "noUncheckedIndexedAccess": true,
+
     // Help catch refactoring errors.
     "noUnusedLocals": true,
+
     // Help catch refactoring errors.
     "noUnusedParameters": true,
+
     // Make sure that we opt into future strict mode features.
     "strict": true,
+
     // Make sure that call() and apply() are type checked.
     "strictBindCallApply": true,
+
     // Catch subtle bugs around functions as arguments.
     "strictFunctionTypes": true,
+
     // Prevent most null-pointer exceptions.
     "strictNullChecks": true,
+
     // Don't assume that properties are always initialized.
     "strictPropertyInitialization": true,
+
     // JavaScript allows arbitary types to be thrown.
-    "useUnknownInCatchVariables": true,
+    "useUnknownInCatchVariables": true
   }
 }

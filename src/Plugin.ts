@@ -1,7 +1,7 @@
 import * as obsidian from 'obsidian';
 
+import { DEFAULT_SETTINGS, type Settings } from './Settings';
 import { SettingsTab } from './SettingsTab';
-import { DEFAULT_SETTINGS, Settings } from './Settings';
 
 export class Plugin extends obsidian.Plugin {
   settings: Settings = DEFAULT_SETTINGS;
@@ -11,12 +11,11 @@ export class Plugin extends obsidian.Plugin {
     this.addSettingTab(new SettingsTab(this.app, this));
   }
 
-  override async onunload() {
-  }
+  override async onunload() {}
 
   async setSetting<TSetting extends keyof Settings>(
     setting: TSetting,
-    value: Settings[TSetting]
+    value: Settings[TSetting],
   ): Promise<void> {
     await this.setSettings({ [setting]: value });
   }

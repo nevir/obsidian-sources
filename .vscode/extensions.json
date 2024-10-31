@@ -1,5 +1,3 @@
 {
-  "recommendations": [
-    "amodio.toggle-excluded-files"
-  ]
+  "recommendations": ["amodio.toggle-excluded-files", "biomejs.biome"],
 }

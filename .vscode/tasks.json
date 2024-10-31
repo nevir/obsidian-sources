@@ -35,7 +35,7 @@
 
       "problemMatcher": {
         "pattern": {
-          "regexp": "."
+          "regexp": ".",
         },
         "background": {
           "activeOnStart": true,
@@ -60,8 +60,8 @@
       },
 
       "runOptions": {
-        "runOn": "folderOpen"
+        "runOn": "folderOpen",
       },
     },
-  ]
+  ],
 }

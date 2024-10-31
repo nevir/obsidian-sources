@@ -1,9 +1,12 @@
 import * as obsidian from 'obsidian';
 
-import { Plugin } from './Plugin';
+import type { Plugin } from './Plugin';
 
 export class SettingsTab extends obsidian.PluginSettingTab {
-  constructor(app: obsidian.App, private plugin: Plugin) {
+  constructor(
+    app: obsidian.App,
+    private plugin: Plugin,
+  ) {
     super(app, plugin);
   }
 
@@ -15,24 +18,25 @@ export class SettingsTab extends obsidian.PluginSettingTab {
     new obsidian.Setting(containerEl)
       .setName(`Thingy`)
       .setDesc(`It does a thingy`)
-      .addText((text) =>
-        text
-          .setValue(settings.thingy || '')
-          .onChange((value) => {
-            this.plugin.setSetting('thingy', value.trim() == '' ? undefined : value);
-          })
+      .addText(text =>
+        text.setValue(settings.thingy || '').onChange(value => {
+          this.plugin.setSetting(
+            'thingy',
+            value.trim() === '' ? undefined : value,
+          );
+        }),
       );
 
     new obsidian.Setting(containerEl)
       .setName(`Required`)
       .setDesc(`What's your favorite number?`)
-      .addSlider((slider) =>
+      .addSlider(slider =>
         slider
           .setLimits(0, 100, 1)
           .setValue(this.plugin.settings.required)
-          .onChange((value) => {
+          .onChange(value => {
             this.plugin.setSetting('required', value);
-          })
+          }),
       );
   }
 }
