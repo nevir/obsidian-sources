@@ -1,7 +1,7 @@
 import * as obsidian from 'obsidian';
 
-import { DEFAULT_SETTINGS, type Settings } from './Settings';
-import { SettingsTab } from './SettingsTab';
+import { DEFAULT_SETTINGS, type Settings } from './settings/Settings';
+import { SettingsTab } from './settings/SettingsTab';
 
 export class Plugin extends obsidian.Plugin {
   settings: Settings = DEFAULT_SETTINGS;
