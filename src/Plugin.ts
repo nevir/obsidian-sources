@@ -7,9 +7,15 @@ import type { Source } from './Source';
 import atlassian from './sources/atlassian';
 import github from './sources/github';
 
+export interface ConfiguredSource {
+  type: string;
+  settings: any;
+}
+
 export class Plugin extends obsidian.Plugin {
   settings: Settings = DEFAULT_SETTINGS;
   sources: Record<string, Source> = {};
+  configuredSources: ConfiguredSource[] = [];
 
   override async onload() {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
@@ -53,5 +59,12 @@ export class Plugin extends obsidian.Plugin {
     }
 
     this.sources[source.type] = source;
+  }
+
+  /**
+   * Get the list of configured data sources.
+   */
+  getConfiguredSources(): ConfiguredSource[] {
+    return this.configuredSources;
   }
 }
