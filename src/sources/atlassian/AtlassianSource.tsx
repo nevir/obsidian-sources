@@ -30,7 +30,7 @@ interface Settings {
 }
 
 const SettingsView = ({ settings }: { settings?: Settings }) => {
-  return <div>settings: {JSON.stringify(settings)}</div>;
+  return <div>Atlassian settings: {JSON.stringify(settings)}</div>;
 };
 
 export class AtlassianSource implements SourceType {
