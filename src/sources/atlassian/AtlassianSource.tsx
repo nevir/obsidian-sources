@@ -1,6 +1,5 @@
 import { render } from 'solid-js/web';
-
-import { SourceType } from '../../SourceType';
+import type { SourceType } from '../../SourceType';
 
 interface Settings {
   /**
@@ -34,8 +33,16 @@ const SettingsView = ({ settings }: { settings?: Settings }) => {
   return <div>settings: {JSON.stringify(settings)}</div>;
 };
 
-export class AtlassianSource extends SourceType<Settings> {
-  override renderSettings(containerEl: HTMLElement): void {
+export class AtlassianSource implements SourceType {
+  static key = 'atlassian';
+  static displayName = 'Atlassian';
+
+  constructor(
+    private onChange: (newSettings: Settings) => void,
+    private settings?: Settings,
+  ) {}
+
+  renderSettings(containerEl: HTMLElement): void {
     render(() => <SettingsView settings={this.settings} />, containerEl);
   }
 }
