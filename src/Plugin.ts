@@ -4,19 +4,17 @@ import { DEFAULT_SETTINGS, type Settings } from './configuration/Settings';
 import { SettingsTab } from './configuration/ConfigurationView';
 import type { Source } from './Source';
 
-import atlassian from './sources/atlassian';
-import github from './sources/github';
+import registerAll from './sources';
 
-export class Plugin extends obsidian.Plugin {
+export class ObsidianSourcesPlugin extends obsidian.Plugin {
   settings: Settings = DEFAULT_SETTINGS;
-  sources: Record<string, Source> = {};
+  sourceTypes: Record<string, typeof Source> = {};
 
   override async onload() {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
     this.addSettingTab(new SettingsTab(this.app, this));
 
-    this.registerSource(atlassian);
-    this.registerSource(github);
+    registerAll(this);
   }
 
   override async onunload() {}
@@ -40,18 +38,18 @@ export class Plugin extends obsidian.Plugin {
    * For now, we just call it interally for each source that's bundled with this
    * plugin.
    */
-  registerSource(source: Source): void {
-    if (this.sources[source.type]) {
+  registerSourceType(type: string, source: typeof Source<any>): void {
+    if (this.sourceTypes[type]) {
       console.warn(
         'Source',
-        source.type,
+        type,
         'already registered. Overwriting:',
-        this.sources[source.type],
+        this.sourceTypes[type],
       );
     } else {
-      console.info('Registering source:', source.type, source);
+      console.info('Registered source type:', type);
     }
 
-    this.sources[source.type] = source;
+    this.sourceTypes[type] = source;
   }
 }

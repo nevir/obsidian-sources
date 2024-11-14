@@ -1,12 +1,7 @@
-import type { Source } from '../../Source';
+import type { ObsidianSourcesPlugin } from '../../Plugin';
 
-import { AtlassianSettingsView, type AtlassianSettings } from './settings';
+import { AtlassianSource } from './AtlassianSource';
 
-export default {
-  type: 'atlassian',
-  name: 'Atlassian',
-  icon: 'atlassian',
-  identifier: (settings: AtlassianSettings) =>
-    `${settings.owner.displayName} (${settings.siteUrl})`,
-  settingsView: AtlassianSettingsView,
-} satisfies Source<AtlassianSettings>;
+export default function registerAtlassian(plugin: ObsidianSourcesPlugin) {
+  plugin.registerSourceType('atlassian', AtlassianSource);
+}

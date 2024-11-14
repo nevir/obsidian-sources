@@ -1,1 +1,1 @@
-export { Plugin as default } from './Plugin';
+export { ObsidianSourcesPlugin as default } from './Plugin';

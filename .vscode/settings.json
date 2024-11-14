@@ -27,6 +27,8 @@
   "typescript.preferences.quoteStyle": "single",
   "javascript.preferences.importModuleSpecifier": "relative",
   "typescript.preferences.importModuleSpecifier": "relative",
+  "javascript.suggest.completeJSDocs": true,
+  "typescript.suggest.completeJSDocs": false,
 
   // JSON
   "json.schemas": [

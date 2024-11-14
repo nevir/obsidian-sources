@@ -1,6 +1,8 @@
-import type { SourceSettingsView } from '../../Source';
+import { render } from 'solid-js/web';
 
-export interface AtlassianSettings {
+import { Source } from '../../Source';
+
+interface Settings {
   /**
    * The base URL of the Atlassian Cloud instance that this data source is
    * connected to.
@@ -28,8 +30,12 @@ export interface AtlassianSettings {
   };
 }
 
-export const AtlassianSettingsView: SourceSettingsView<AtlassianSettings> = ({
-  settings,
-}) => {
+const SettingsView = ({ settings }: { settings?: Settings }) => {
   return <div>settings: {JSON.stringify(settings)}</div>;
 };
+
+export class AtlassianSource extends Source<Settings> {
+  override renderSettings(containerEl: HTMLElement): void {
+    render(() => <SettingsView settings={this.settings} />, containerEl);
+  }
+}

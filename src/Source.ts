@@ -1,47 +1,23 @@
-import type { JSX } from 'solid-js';
-
-/**
- * A Solid component that is used when configuring the source.
- *
- * Settings will be undefined if this is the first time the source is being
- * configured.
- */
-export type SourceSettingsView<TSettings> = (props: {
-  settings?: TSettings;
-  onUpdate: (newSettings: TSettings) => void;
-}) => JSX.Element;
-
 /**
  * A specific type of data source.
  */
-export interface Source<TSettings = any> {
+export abstract class Source<TSettings = unknown> {
   /**
-   * The unique identifier for the source.
-   */
-  type: string;
-
-  /**
-   * The display name of the source.
-   */
-  name: string;
-
-  /**
-   * An icon (lucide id or URL) to represent the source.
-   */
-  icon: string;
-
-  /**
-   * The text used to identify a specific instance of this source.
+   * Construct a new instance of this source, with any previously persisted
+   * settings.
    *
-   * Typically is a username, account URL, or similar.
+   * `onChange` must be called whenever the settings are updated.
    */
-  identifier: (settings: TSettings) => string;
+  constructor(
+    protected onChange: (newSettings: TSettings) => void,
+    protected settings?: TSettings,
+  ) {}
 
   /**
-   * A Solid component that is used when configuring the source.
+   * Called when the data source is being configured via the settings UI.
    *
-   * Settings will be undefined if this is the first time the source is being
-   * configured.
+   * This method should render the settings UI into the provided container,
+   * and should call `onChange` whenever the settings are updated.
    */
-  settingsView: SourceSettingsView<TSettings>;
+  abstract renderSettings(containerEl: HTMLElement): void;
 }
