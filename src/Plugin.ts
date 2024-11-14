@@ -2,19 +2,23 @@ import * as obsidian from 'obsidian';
 
 import { DEFAULT_SETTINGS, type Settings } from './configuration/Settings';
 import { SettingsTab } from './configuration/ConfigurationView';
-import type { Source } from './Source';
+import type { SourceType, SourceTypeConfig } from './SourceType';
 
 import registerAll from './sources';
 
 export class ObsidianSourcesPlugin extends obsidian.Plugin {
   settings: Settings = DEFAULT_SETTINGS;
-  sourceTypes: Record<string, typeof Source> = {};
+  sources: SourceType[] = [];
+  sourceTypes: Record<
+    string,
+    { constructor: typeof SourceType; config: SourceTypeConfig }
+  > = {};
 
   override async onload() {
+    registerAll(this);
+
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
     this.addSettingTab(new SettingsTab(this.app, this));
-
-    registerAll(this);
   }
 
   override async onunload() {}
@@ -38,18 +42,21 @@ export class ObsidianSourcesPlugin extends obsidian.Plugin {
    * For now, we just call it interally for each source that's bundled with this
    * plugin.
    */
-  registerSourceType(type: string, source: typeof Source<any>): void {
-    if (this.sourceTypes[type]) {
+  registerSourceType(
+    source: typeof SourceType<any>,
+    config: SourceTypeConfig,
+  ): void {
+    if (this.sourceTypes[config.key]) {
       console.warn(
         'Source',
-        type,
+        config.key,
         'already registered. Overwriting:',
-        this.sourceTypes[type],
+        this.sourceTypes[config.key],
       );
     } else {
-      console.info('Registered source type:', type);
+      console.info('Registered source type:', config);
     }
 
-    this.sourceTypes[type] = source;
+    this.sourceTypes[config.key] = { constructor: source, config };
   }
 }

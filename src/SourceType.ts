@@ -1,7 +1,18 @@
 /**
+ * Static configuration for a source type
+ */
+export interface SourceTypeConfig {
+  /** A globally unique string that identifies this source type. */
+  key: string;
+
+  /** A human-readable name for this source type. */
+  name: string;
+}
+
+/**
  * A specific type of data source.
  */
-export abstract class Source<TSettings = unknown> {
+export abstract class SourceType<TSettings = unknown> {
   /**
    * Construct a new instance of this source, with any previously persisted
    * settings.
