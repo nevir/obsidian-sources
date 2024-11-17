@@ -920,6 +920,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nevir/toolchain@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@nevir/toolchain@npm:0.1.0"
+  checksum: 10c0/ff739ba26bd7e51a5bddcd8571bd07d6c56a132d87b7b699d9c5b2755f3844fdc15f5364dd601fc878b082916251714604ce49ae4a856ab4ffa80a0c4a128e00
+  languageName: node
+  linkType: hard
+
 "@npmcli/agent@npm:^2.0.0":
   version: 2.2.2
   resolution: "@npmcli/agent@npm:2.2.2"
@@ -2542,6 +2549,7 @@ __metadata:
     "@macaron-css/core": "npm:^1.5.2"
     "@macaron-css/solid": "npm:^1.5.3"
     "@macaron-css/vite": "npm:^1.5.1"
+    "@nevir/toolchain": "npm:^0.1.0"
     "@types/node": "npm:^18.15.0"
     npm-run-all2: "npm:^7.0.1"
     obsidian: "npm:1.7.2"

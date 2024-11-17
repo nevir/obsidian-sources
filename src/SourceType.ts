@@ -25,6 +25,11 @@ export interface SourceType {
    * and should call `onChange` whenever the settings are updated.
    */
   renderSettings(containerEl: HTMLElement): void;
+
+  /**
+   * Called when receiving an OAuth callback for this source type.
+   */
+  maybeHandleOAuthCallback(params: unknown): boolean;
 }
 
 /**

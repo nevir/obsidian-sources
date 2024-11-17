@@ -16,6 +16,9 @@ export class ObsidianSourcesPlugin extends obsidian.Plugin {
 
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
     this.addSettingTab(new SettingsTab(this.app, this));
+    this.registerObsidianProtocolHandler('sources/oauth', (params: unknown) => {
+      console.warn('obsidian://sources called with', params);
+    });
   }
 
   override async onunload() {}
