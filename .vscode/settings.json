@@ -12,14 +12,14 @@
 
   // Workspace
   "files.exclude": {
-    "**/.*": false,
-    "**/node_modules/": false,
-    "**/*.lock": false,
-    "*config.*": false,
-    "biome.json*": false,
-    "data.json": false,
-    "main.js": false,
-    "styles.css": false,
+    "**/.*": true,
+    "**/node_modules/": true,
+    "**/*.lock": true,
+    "*config.*": true,
+    "biome.json*": true,
+    "data.json": true,
+    "main.js": true,
+    "styles.css": true,
   },
 
   // TypeScript

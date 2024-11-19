@@ -1,6 +1,7 @@
 import { createSignal, For } from 'solid-js';
+
 import type { ObsidianSourcesPlugin } from '../../Plugin';
-import { getSourceTypeClass } from '../../SourceType';
+import { getSourceTypeClass } from '../../util';
 
 export function DataSourcesPage({ plugin }: { plugin: ObsidianSourcesPlugin }) {
   const [sources, setSources] = createSignal(plugin.sources);
@@ -27,9 +28,22 @@ export function DataSourcesPage({ plugin }: { plugin: ObsidianSourcesPlugin }) {
           </div>
         )}
       </For>
-      <div>
-        <button onClick={() => addSource('atlassian')}>Add Source</button>
-      </div>
+      <form
+        onSubmit={event => {
+          const data = new FormData(event.currentTarget);
+          addSource(data.get('sourceType') as string);
+          event.preventDefault();
+        }}
+      >
+        <select name='sourceType'>
+          <For each={Object.values(plugin.sourceTypes)}>
+            {sourceType => (
+              <option value={sourceType.key}>{sourceType.displayName}</option>
+            )}
+          </For>
+        </select>
+        <button type='submit'>Add Source</button>
+      </form>
     </div>
   );
 }
